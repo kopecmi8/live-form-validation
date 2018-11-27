@@ -1,11 +1,11 @@
 {
-  "name": "live-form-validation",
+  "name": "live-form-validation-es6",
   "version": "1.9.0",
   "description": "Nice client-side live form validation for Nette Forms 2.4. Script by default works nicely with Twitter Bootstrap 3.",
   "main": "live-form-validation.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/contributte/live-form-validation.git"
+    "url": "git+https://github.com/kopecmi8/live-form-validation.git"
   },
   "keywords": [
     "nette",
@@ -16,7 +16,7 @@
   "author": "Nette Community",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/contributte/live-form-validation/issues"
+    "url": "https://github.com/kopecmi8/live-form-validation/issues"
   },
-  "homepage": "https://github.com/contributte/live-form-validation/blob/master/README.md"
+  "homepage": "https://github.com/kopecmi8/live-form-validation/blob/master/README.md"
 }

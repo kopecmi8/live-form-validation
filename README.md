@@ -1,4 +1,6 @@
-# Live Form Validation
+# Live Form Validation ES6
+
+This is modified version of Live Form Validation for usage in ES6 syntax as module.
 
 :no_entry: Nice client-side live form validation for Nette Forms 2.4.
 
@@ -42,6 +44,26 @@ The script already contains the `netteForms.js` file, so don't use it again and 
 ## Usage
 
 Script by default works nicely with Twitter Bootstrap 3, but you can customize the options to fit your exact needs.
+
+### ES6 usage
+
+Script can be used in stadnard way described bellow or as module. For example:
+
+```js
+import LiveFormValidation from 'live-form-validation-es6';
+
+window.LiveForm = LiveFormValidation.LiveForm;
+window.Nette = LiveFormValidation.Nette;
+```
+
+or
+
+```js
+const liveFormValidation = require('live-form-validation-es6');
+
+window.LiveForm = liveFormValidation.LiveForm;
+window.Nette = liveFormValidation.Nette;
+```
 
 ### Options
 
