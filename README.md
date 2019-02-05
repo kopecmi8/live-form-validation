@@ -38,7 +38,7 @@ The script already contains the `netteForms.js` file, so don't use it again and 
 
 | State       | Version   | Branch   |
 |-------------|-----------|----------|
-| development | `^1.9.0`  | `master` |
+| development | `^1.9.4`  | `master` |
 | stable      | `^1.8.1`  | `master` |
 
 ## Usage
@@ -47,8 +47,9 @@ Script by default works nicely with Twitter Bootstrap 3, but you can customize t
 
 ### ES6 usage
 
-Script can be used in stadnard way described bellow or as module. For example:
+Script can be used in standard way described bellow or as ES6 module. 
 
+First you need to import module and link it to the window context like this:
 ```js
 import LiveFormValidation from 'live-form-validation-es6';
 
@@ -63,6 +64,22 @@ const liveFormValidation = require('live-form-validation-es6');
 
 window.LiveForm = liveFormValidation.LiveForm;
 window.Nette = liveFormValidation.Nette;
+```
+
+Then you need to run initialization of validation when DOM is ready. For example:
+
+```js
+document.addEventListener('DOMContentLoaded', () => {
+   window.Nette.init(); 
+});
+```
+
+or with jQuery
+
+```js
+$(() => {
+   window.Nette.init();  
+});
 ```
 
 ### Options
