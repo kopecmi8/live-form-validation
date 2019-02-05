@@ -1163,6 +1163,10 @@ Nette.toggle = function(id, visible, srcElement) {
  * Setup handlers.
  */
 Nette.initForm = function(form) {
+	if (form.noValidate) {
+		return;
+	}
+
 	form.noValidate = 'novalidate';
 
 	// LiveForm: addition
