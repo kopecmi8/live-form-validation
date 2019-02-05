@@ -333,8 +333,10 @@ LiveForm.getMessageElement = function(el) {
 		}
 
 		var parentEl = this.getMessageParent(el);
-		if (parentEl) {
+		if (parentEl === el.parentNode) {
 			parentEl.insertBefore(messageEl, el.nextSibling);
+		} else if(parentEl) {
+			parentEl.append(messageEl);
 		}
 	}
 
@@ -1196,20 +1198,13 @@ Nette.initForm = function(form) {
  */
 Nette.initOnLoad = function() {
 	Nette.addEvent(document, 'DOMContentLoaded', function() {
+// LiveForm: original netteForms.js code 
+/*  
 		for (var i = 0; i < document.forms.length; i++) {
 			var form = document.forms[i];
 			for (var j = 0; j < form.elements.length; j++) {
 				if (form.elements[j].getAttribute('data-nette-rules')) {
 					Nette.initForm(form);
-
-					// LiveForm: addition
-					if (LiveForm.hasClass(form, 'validate-on-load')) {
-						// This is not so nice way, but I don't want to spoil validateForm, validateControl and other methods with another parameter
-						LiveForm.setFormProperty(form, "onLoadValidation", true);
-						Nette.validateForm(form);
-						LiveForm.setFormProperty(form, "onLoadValidation", false);
-					}
-
 					break;
 				}
 			}
@@ -1221,6 +1216,42 @@ Nette.initOnLoad = function() {
 				target.form['nette-submittedBy'] = target;
 			}
 		});
+*/
+    // LiveForm: addition
+    Nette.init();
+	});
+};
+
+// LiveForm: addition
+/**
+ * Init function to be called in case usage as module
+ * 
+ * @public 
+ */
+Nette.init = function() {
+  for (var i = 0; i < document.forms.length; i++) {
+		var form = document.forms[i];
+		for (var j = 0; j < form.elements.length; j++) {
+			if (form.elements[j].getAttribute('data-nette-rules')) {
+					Nette.initForm(form);
+
+				if (LiveForm.hasClass(form, 'validate-on-load')) {
+					// This is not so nice way, but I don't want to spoil validateForm, validateControl and other methods with another parameter
+					LiveForm.setFormProperty(form, "onLoadValidation", true);
+					Nette.validateForm(form);
+					LiveForm.setFormProperty(form, "onLoadValidation", false);
+				}
+
+				break;
+			}
+		}
+	}
+
+	Nette.addEvent(document.body, 'click', function(e) {
+		var target = e.target || e.srcElement;
+		if (target.form && target.type in {submit: 1, image: 1}) {
+			target.form['nette-submittedBy'] = target;
+		}
 	});
 };
 
